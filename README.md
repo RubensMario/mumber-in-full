@@ -2,6 +2,8 @@
 
 An app to convert a number (that represents a value in brazilian currency (reais), with cents) in a string with the number written in full.
 
+The function that makes the conversion is in the helpers folder.
+
 Prerequisites
 To run this project, you will need to have Git installed in your machine.
 
