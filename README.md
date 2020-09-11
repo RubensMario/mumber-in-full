@@ -9,7 +9,7 @@ To run this project, you will need to have Git installed in your machine.
 
 - Clone this repository
 
-\$ git clone git@github.com:RubensMario/mumber-in-full.git
+\$ git clone https://github.com/RubensMario/mumber-in-full.git
 
 - Open the index.html file on your browser
 
