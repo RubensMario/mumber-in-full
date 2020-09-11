@@ -3,7 +3,7 @@ function numberInFullConverter(number) {
   const stringNumber = number.toString().replace(',', '.');
   // Recuperar valor numérico
   const numericValue = parseFloat(stringNumber);
-  // let floatNumber = parseFloat(numericValue);
+  // Separar parte inteira
   const integerNumber = Math.trunc(numericValue);
 
   let valueInFull = '';
@@ -17,8 +17,10 @@ function numberInFullConverter(number) {
 
   const oneBillion = 1000000000;
   const oneMillion = 1000000;
+  const upperLimit = 999 * oneBillion;
 
-  const cents = decimalPartOf(numericValue);
+  const cents = fractionalParteOf(numericValue);
+  let centsLength = null;
 
   // Escrever por extenso cada classe do número
   const billionsInFull =
@@ -76,9 +78,18 @@ function numberInFullConverter(number) {
 
   let caseSelect = null;
 
-  if (integerNumber >= 1000000000000) caseSelect = 1;
+  // Caso o valor esteja acima do limite de 999bilhões, mostrar aviso ao usuário
+  if (integerNumber >= upperLimit) caseSelect = 1;
 
+  // Caso o valor seja nulo, o resultado será Zero real
   if (!numericValue) caseSelect = 2;
+
+  // Caso sejam usados mais que dois dígitos após a vírgula,
+  // mostrar aviso ao usuário
+  // evitando comportamento inadequado para o caso de R$ 0,100
+  if (cents) centsLength = fractionalPartCounter(number);
+
+  if (centsLength > 2) caseSelect = 3;
 
   switch (caseSelect) {
     case 1:
@@ -86,6 +97,9 @@ function numberInFullConverter(number) {
       break;
     case 2:
       valueInFull = 'Zero real';
+      break;
+    case 3:
+      valueInFull = ' Os centavos devem ter menos que três dígitos';
       break;
     default:
       valueInFull =
@@ -105,6 +119,7 @@ function numberInFullConverter(number) {
   const capitalizedValueInFull = capitalizeFirstLetter(valueInFull);
 
   return capitalizedValueInFull;
+  // return centsLength;
 }
 
 // Retira espaços vazios duplos de uma string
@@ -119,6 +134,18 @@ function capitalizeFirstLetter(str) {
     //passa o primeiro caractere para maiusculo, e adiciona o todo resto minusculo
     return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
   });
+}
+
+// Informa o número de casas decimais de um número
+function fractionalPartCounter(number) {
+  // Forma alternativa de conversão número-string
+  const stringNumber = number + '';
+  // Trocar vírgula por ponto
+  const newStringNumber = stringNumber.replace(',', '.');
+  const stringFractionalPart = newStringNumber.split('.');
+  const fractionalLength = stringFractionalPart[1].length;
+
+  return fractionalLength;
 }
 
 // Escreve por extenso números menores que 1000
@@ -214,12 +241,12 @@ function splitNumber(number) {
 }
 
 // Separa a parte decimal de um número
-function decimalPartOf(number) {
-  const integerPart = Math.trunc(number);
-  const decimalPart = number - integerPart;
-  const roundedDecimalPart = Math.round(decimalPart + 'e+2');
+function fractionalParteOf(number) {
+  const integralPart = Math.trunc(number);
+  const fractionalPart = number - integralPart;
+  const roundedFractionalPart = Math.round(fractionalPart + 'e+2');
 
-  return roundedDecimalPart;
+  return roundedFractionalPart;
 }
 
 // Separa número nas classes: centenas, milhares, milhões, bilhões
