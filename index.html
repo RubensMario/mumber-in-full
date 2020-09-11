@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Numbers in full</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Números por extenso</h1>
+      <label class="active">Informe um número</label>
+      <div class="inputData">
+        <input id="inputNumber" type="text" placeholder="Valor em R$(xx,xx):" />
+        <a id="button" class="waves-effect waves-light btn-small">Ok</a>
+      </div>
+      <input
+        id="inputText"
+        type="text"
+        placeholder="Valor por extenso:"
+        readonly
+      />
+    </div>
+    <script type="module" src="./js/script.js"></script>
+  </body>
+</html>
