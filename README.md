@@ -1,22 +1,28 @@
-#number-in-full
+# number-in-full
+
 An app to convert a number (that represents a value in brazilian currency (reais), with cents) in a string with the number written in full.
 
 Prerequisites
 To run this project, you will need to have Git installed in your machine.
 
-Installing
+## Installing
 
-# Clone this repository
+- Clone this repository
 
-# Open the index.html file on your browser
+\$ git clone git@github.com:RubensMario/mumber-in-full.git
 
-Built With
+- Open the index.html file on your browser
+
+## Built with
+
 JavaScript
 HTML
 CSS
 
-Author
+## Author
+
 Rubens Mario
 
-Acknowledgments
+## Acknowledgments
+
 App developed during the hiring process of the brazilian start up Moben.
