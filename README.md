@@ -15,9 +15,9 @@ To run this project, you will need to have Git installed in your machine.
 
 ## Built with
 
-JavaScript
-HTML
-CSS
+- JavaScript
+- HTML
+- CSS
 
 ## Author
 
